@@ -13,8 +13,7 @@ private String receivedString;
 String rawValues;
 String detectedMotion;
 
-
-void serialEvent(Serial p)
+void serialEvent(Serial myPort)
 {
   if (myPort.available() > 0)
   {
@@ -75,6 +74,7 @@ void processSerial(char chartmp) {
     if (counterTrame == 60) {
       rawValues=receivedString;
       calculateCoord();
+      sendOSC();
       //println(rawValues);
       automateReceive = 0;
     }
